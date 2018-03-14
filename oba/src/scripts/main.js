@@ -191,6 +191,7 @@
         loaded++
         this.updateLoader(loaded)
       })
+      let newUrl
       let randomNum
       if (window.localStorage.getItem(`${this.buildings[this.currentBuilding].name.toLowerCase()}_count`)) {
         limit = JSON.parse(window.localStorage.getItem(`${this.buildings[this.currentBuilding].name.toLowerCase()}_count`))
@@ -202,7 +203,7 @@
           this.getData(this.generateUrl('background', randomNum)).then((result) => {
             console.log(result)
             let oldUrl = JSON.parse(result).results.bindings[0].img.value
-            let newUrl = this.storeBackground(oldUrl)
+            newUrl = this.storeBackground(oldUrl)
             window.localStorage.setItem(`${this.buildings[this.currentBuilding].name.toLowerCase()}_background-${this.currentDate}-${randomNum}`, JSON.stringify(newUrl))
             app.elements.background.style.backgroundImage = `url(${newUrl})`
           })
