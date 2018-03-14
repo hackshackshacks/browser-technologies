@@ -39,6 +39,7 @@ form {
       &:checked + label {
         background: $primary-color;
         transform:skew(-2deg,-2deg);
+        text-decoration: underline;
       }
     }
     label {
