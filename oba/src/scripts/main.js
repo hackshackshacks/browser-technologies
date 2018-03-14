@@ -36,7 +36,7 @@
           <h1>${newTitle}</h1>
           <h1>${date}</h1>
         </div>
-        <img src="${newUrl}">
+        <img src="${newUrl}" alt="Plaatje van een ${api.buildings[api.currentBuilding].name} poster">
       </article>
       `
       return el
@@ -181,6 +181,11 @@
           }
           return obj
         })
+        // let anImg = new Image()
+        // anImg.src = usefulData[0].url
+        // anImg.addEventListener('load', () => {
+        //   console.log('loaded')
+        // })
         window.localStorage.setItem(`${this.buildings[this.currentBuilding].name.toLowerCase()}_posters`, JSON.stringify(usefulData))
         app.render(usefulData)
         loaded++
