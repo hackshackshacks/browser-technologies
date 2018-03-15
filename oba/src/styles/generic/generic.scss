@@ -19,18 +19,20 @@ body {
   z-index: -1;
   filter: grayscale(1) brightness(60%);
 }
-form {
+nav {
   display: grid;
   justify-items: center;
   margin-top: 1em;
-  div {
+  form {
     border: 0;
     padding: 0;
     display: inline-grid;
     grid-gap: 2em;
     grid-auto-flow: column;
     input {
-      display: none;
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
       &+ label {
         padding: 1em;
         cursor: pointer;
@@ -41,9 +43,24 @@ form {
         transform:skew(-2deg,-2deg);
         text-decoration: underline;
       }
+      &:focus + label {
+        background: rgba(255, 0, 0, 0.2);
+        transform:skew(-2deg,-2deg);
+        &:after {
+          content: '';
+          width: 10px;
+          height: 10px;
+          border-radius: 100px;
+          background: #fff;
+          position: absolute;
+          bottom: -15px;
+          left: 50%;
+          transform: translatex(-50%);
+        }
+      }
     }
     label {
-      &:hover {
+      &:hover{
         background: rgba(255, 0, 0, 0.2);
         transform:skew(-2deg,-2deg);
       }
@@ -63,6 +80,10 @@ form {
   opacity: 0;
   transform: translateY(2em);
   transition: all 500ms;
+
+  &:focus {
+    animation: pop 300ms forwards;
+  }
   .carousel-cell {
     width: 100%;
     display: grid;
@@ -96,7 +117,7 @@ form {
       }
     }
   }
-  &:hover {
+  &:hover, &:focus-within {
     .poster-text {
       transform: translateY(0);
     }
@@ -121,6 +142,10 @@ form {
     }
     &:hover {
       background: transparent;
+      box-shadow: 0 0 0 5px $primary-color;
+    }
+    &:focus {
+      box-shadow: 0 0 0 5px $primary-color;
     }
   }
   .flickity-page-dots {
@@ -175,58 +200,4 @@ form {
 .show {
   opacity: 1;
   transform: translateY(0);
-}
-
-@-webkit-keyframes spin {
-  0% {
-    -webkit-transform: rotate(0deg);
-    /* Chrome, Opera 15+, Safari 3.1+ */
-    -ms-transform: rotate(0deg);
-    /* IE 9 */
-    transform: rotate(0deg);
-    /* Firefox 16+, IE 10+, Opera */
-  }
-  100% {
-    -webkit-transform: rotate(360deg);
-    /* Chrome, Opera 15+, Safari 3.1+ */
-    -ms-transform: rotate(360deg);
-    /* IE 9 */
-    transform: rotate(360deg);
-    /* Firefox 16+, IE 10+, Opera */
-  }
-}
-
-@keyframes spin {
-  0% {
-    -webkit-transform: rotate(0deg);
-    /* Chrome, Opera 15+, Safari 3.1+ */
-    -ms-transform: rotate(0deg);
-    /* IE 9 */
-    transform: rotate(0deg);
-    /* Firefox 16+, IE 10+, Opera */
-  }
-  100% {
-    -webkit-transform: rotate(360deg);
-    /* Chrome, Opera 15+, Safari 3.1+ */
-    -ms-transform: rotate(360deg);
-    /* IE 9 */
-    transform: rotate(360deg);
-    /* Firefox 16+, IE 10+, Opera */
-  }
-}
-@keyframes fadeOut {
-  0% {
-   opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-@keyframes fadeIn {
-  0% {
-   opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
 }
