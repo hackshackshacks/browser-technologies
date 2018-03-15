@@ -47,6 +47,8 @@ Ik heb met de tool Sim Daltonism (https://michelf.ca/projects/sim-daltonism/) on
 
 Omdat de navigatie bij laag contrast een beetje moeilijk zichtbaar is heb een een underline toegevoegd voor extra duidelijkheid.
 
+![](https://github.com/hackshackshacks/browser-technologies/blob/master/opdracht1/Screen%20Shot%202018-03-15%20at%2023.58.57.png?raw=true)
+
 #### Breedband internet
 Om te testen hoe mijn site presteert wanneer de gebruiker een langzame verbinding heeft. Dit doe ik met behulp van de chrome developer tools. De volledige website kost 1mb om te laden. 800/1000kb zijn gebruikt voor het laden van de afbeeldingen. Op dit moment laad ik meteen alle posters in van het gebouw Paradiso. De mogelijkheid is er om pas wanneer de user op 'volgende' klikt de volgende poster op te halen. Dit zou wel betekenen dat de ervaring voor gebruikers met snel internet wat minder wordt.
 
@@ -67,6 +69,12 @@ Ik heb het volgende gedaan:
 * Navigatie verbeterd zodat deze bij tabben wordt meegenomen.
 * Focus states toevoegen aan alle elementen.
 * Met focus within is de omschrijving nu ook zichtbaar als de focus op de volgende/vorige knop staat.
+
+![](https://github.com/hackshackshacks/browser-technologies/blob/master/opdracht1/Screen%20Shot%202018-03-15%20at%2023.58.57.png?raw=true)
+*Active*
+
+![](https://github.com/hackshackshacks/browser-technologies/blob/master/opdracht1/Screen%20Shot%202018-03-16%20at%2000.13.08.png?raw=true)
+*Focus*
 
 ### To do
 * Herschrijven van flickity carousel.
