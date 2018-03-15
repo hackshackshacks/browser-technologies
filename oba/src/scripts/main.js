@@ -28,8 +28,10 @@
     },
     createPoster: function (title, date, url, desc) {
       let newTitle = title.replace(`${api.buildings[api.currentBuilding].name}`, `<span>${api.buildings[api.currentBuilding].name}</span>`)
-      let newUrl = url.replace('level3', 'level2')
-
+      let newUrl = url
+      if (window.innerWidth > 900) {
+        newUrl = url.replace('level3', 'level2')
+      }
       let el = `
       <article class="carousel-cell">
         <div class="poster-text">
