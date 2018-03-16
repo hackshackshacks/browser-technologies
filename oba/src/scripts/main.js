@@ -1,8 +1,8 @@
 (() => {
   const app = {
     elements: {
-      buildingBtns: document.querySelectorAll('[name="building"]'),
-      dateBtns: document.querySelectorAll('[name="date"]'),
+      buildingBtns: document.querySelectorAll('.building'),
+      dateBtns: document.querySelectorAll('.date'),
       background: document.querySelector('.background'),
       posters: document.querySelector('.posters')
     },
@@ -16,29 +16,34 @@
       this.elements.buildingBtns.forEach((btn) => {
         btn.addEventListener('click', () => {
           api.setCurrentBuilding(Number(btn.value))
+          this.elements.buildingBtns.forEach((button) => {
+            button.classList.remove('active')
+          })
+          btn.classList.add('active')
           api.init()
         })
       })
       this.elements.dateBtns.forEach((btn) => {
         btn.addEventListener('click', () => {
           api.currentDate = Number(btn.value)
+          this.elements.dateBtns.forEach((button) => {
+            button.classList.remove('active')
+          })
+          btn.classList.add('active')
           api.init()
         })
       })
     },
     createPoster: function (title, date, url, desc) {
       let newTitle = title.replace(`${api.buildings[api.currentBuilding].name}`, `<span>${api.buildings[api.currentBuilding].name}</span>`)
-      let newUrl = url
-      if (window.innerWidth > 900) {
-        newUrl = url.replace('level3', 'level2')
-      }
+      let highres = url.replace('level3', 'level2')
       let el = `
       <article class="carousel-cell">
         <div class="poster-text">
           <h1>${newTitle}</h1>
           <h1>${date}</h1>
         </div>
-        <img src="${newUrl}" alt="Plaatje van een ${api.buildings[api.currentBuilding].name} poster">
+        <img src="${url}" srcset="${url} 1x, ${highres} 2x" alt="">
       </article>
       `
       return el

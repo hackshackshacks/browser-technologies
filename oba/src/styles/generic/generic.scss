@@ -23,29 +23,35 @@ nav {
   display: grid;
   justify-items: center;
   margin-top: 1em;
-  form {
+  div {
     border: 0;
     padding: 0;
     display: inline-grid;
     grid-gap: 2em;
     grid-auto-flow: column;
-    input {
-      position: absolute;
-      opacity: 0;
-      pointer-events: none;
-      &+ label {
-        padding: 1em;
-        cursor: pointer;
-        transition: all 500ms;
-      }
-      &:checked + label {
+    button {
+      padding: 1em;
+      cursor: pointer;
+      transition: all 500ms;
+      color: #fff;
+      background: none;
+      border: 0;
+      font-family: 'Montserrat', 'Trebuchet MS', sans-serif;
+      border: 2px solid #fff;
+      transform:skew(-2deg,-2deg);
+      &.active {
         background: $primary-color;
-        transform:skew(-2deg,-2deg);
-        text-decoration: underline;
+        border: none;
       }
-      &:focus + label {
+      &:hover {
         background: rgba(255, 0, 0, 0.2);
-        transform:skew(-2deg,-2deg);
+      }
+      &:focus {
+        outline: none;
+        background: rgba(255, 0, 0, 0.2);
+        &.active {
+          background: $primary-color;
+        }
         &:after {
           content: '';
           width: 10px;
@@ -59,16 +65,10 @@ nav {
         }
       }
     }
-    label {
-      &:hover{
-        background: rgba(255, 0, 0, 0.2);
-        transform:skew(-2deg,-2deg);
-      }
-    }
   }
   &.topNav {
-    margin-top: 2em;
-    label {
+    margin: 2em 0;
+    button {
       font-size: 2em;
       text-transform: uppercase;
     }
