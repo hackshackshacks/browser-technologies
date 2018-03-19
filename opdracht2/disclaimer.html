@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700,900" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      font-weight: 300;
+      -webkit-font-smoothing: antialiased;
+    }
+    a {
+      text-decoration: none;
+    }
+    main {
+      padding: 1em;
+    }
+    main a {
+      text-decoration: underline;
+      color: rgb(30,30,30);
+    }
+    article {
+      position: fixed;
+      width: 95%;
+      max-width: 50em;
+      height: 90vh;
+      box-shadow: 0 0 100vh 100vh rgba(0, 0, 0, 0.7);
+      background: #fff;
+      top: 2em;
+      left: 50%;
+      transform: translatex(-50%);
+      opacity: 0;
+      z-index: -1;
+      transition: opacity 200ms;
+      border-radius: 3px;
+    }
+
+    article:target {
+      opacity: 1;
+      z-index: 1;
+    }
+    article header {
+      height: 10%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 1em;
+      box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+    }
+    article header h1 {
+      margin: 0;
+    }
+    article header a {
+      padding: 1em 0;
+    }
+    article main {
+      overflow-y: scroll;
+      height: 90%;
+      padding: 0 1em;
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <a href="index.html">Return</a>
+    <a href="#modal" id="modalTrigger">Disclaimer</a>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero quod, architecto consectetur quo cum eos, aut delectus voluptatum
+      obcaecati aliquam voluptate est. Sint voluptate, culpa sapiente provident hic incidunt, odio.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor deleniti id reprehenderit, pariatur tempore quaerat. Obcaecati
+      aspernatur nulla similique nostrum distinctio earum quae assumenda natus optio repudiandae, dolor voluptatem voluptates!</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero quod, architecto consectetur quo cum eos, aut delectus voluptatum
+      obcaecati aliquam voluptate est. Sint voluptate, culpa sapiente provident hic incidunt, odio.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor deleniti id reprehenderit, pariatur tempore quaerat. Obcaecati
+      aspernatur nulla similique nostrum distinctio earum quae assumenda natus optio repudiandae, dolor voluptatem voluptates!</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero quod, architecto consectetur quo cum eos, aut delectus voluptatum
+      obcaecati aliquam voluptate est. Sint voluptate, culpa sapiente provident hic incidunt, odio.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor deleniti id reprehenderit, pariatur tempore quaerat. Obcaecati
+      aspernatur nulla similique nostrum distinctio earum quae assumenda natus optio repudiandae, dolor voluptatem voluptates!</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero quod, architecto consectetur quo cum eos, aut delectus voluptatum
+      obcaecati aliquam voluptate est. Sint voluptate, culpa sapiente provident hic incidunt, odio.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor deleniti id reprehenderit, pariatur tempore quaerat. Obcaecati
+      aspernatur nulla similique nostrum distinctio earum quae assumenda natus optio repudiandae, dolor voluptatem voluptates!</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero quod, architecto consectetur quo cum eos, aut delectus voluptatum
+      obcaecati aliquam voluptate est. Sint voluptate, culpa sapiente provident hic incidunt, odio.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor deleniti id reprehenderit, pariatur tempore quaerat. Obcaecati
+      aspernatur nulla similique nostrum distinctio earum quae assumenda natus optio repudiandae, dolor voluptatem voluptates!</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero quod, architecto consectetur quo cum eos, aut delectus voluptatum
+      obcaecati aliquam voluptate est. Sint voluptate, culpa sapiente provident hic incidunt, odio.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor deleniti id reprehenderit, pariatur tempore quaerat. Obcaecati
+      aspernatur nulla similique nostrum distinctio earum quae assumenda natus optio repudiandae, dolor voluptatem voluptates!</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero quod, architecto consectetur quo cum eos, aut delectus voluptatum
+      obcaecati aliquam voluptate est. Sint voluptate, culpa sapiente provident hic incidunt, odio.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor deleniti id reprehenderit, pariatur tempore quaerat. Obcaecati
+      aspernatur nulla similique nostrum distinctio earum quae assumenda natus optio repudiandae, dolor voluptatem voluptates!</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero quod, architecto consectetur quo cum eos, aut delectus voluptatum
+      obcaecati aliquam voluptate est. Sint voluptate, culpa sapiente provident hic incidunt, odio.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor deleniti id reprehenderit, pariatur tempore quaerat. Obcaecati
+      aspernatur nulla similique nostrum distinctio earum quae assumenda natus optio repudiandae, dolor voluptatem voluptates!</p>
+  </main>
+  <article id="modal">
+    <header>
+      <h1>Disclaimer</h1>
+      <a href="#" id="close">
+        <img src="close.png" alt="Close modal">
+      </a>
+    </header>
+    <main>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero quod, architecto consectetur quo cum eos, aut delectus
+        voluptatum obcaecati aliquam voluptate est. Sint voluptate, culpa sapiente provident hic incidunt, odio.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor deleniti id reprehenderit, pariatur tempore quaerat.
+        Obcaecati aspernatur nulla similique nostrum distinctio earum quae assumenda natus optio repudiandae, dolor voluptatem
+        voluptates!
+      </p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor deleniti id reprehenderit, pariatur tempore quaerat.
+        Obcaecati aspernatur nulla similique nostrum distinctio earum quae assumenda natus optio repudiandae, dolor voluptatem
+        voluptates!
+      </p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor deleniti id reprehenderit, pariatur tempore quaerat.
+        Obcaecati aspernatur nulla similique nostrum distinctio earum quae assumenda natus optio repudiandae, dolor voluptatem
+        voluptates!
+      </p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero quod, architecto consectetur quo cum eos, aut delectus
+        voluptatum obcaecati aliquam voluptate est. Sint voluptate, culpa sapiente provident hic incidunt, odio.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor deleniti id reprehenderit, pariatur tempore quaerat.
+        Obcaecati aspernatur nulla similique nostrum distinctio earum quae assumenda natus optio repudiandae, dolor voluptatem
+        voluptates!
+      </p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor deleniti id reprehenderit, pariatur tempore quaerat.
+        Obcaecati aspernatur nulla similique nostrum distinctio earum quae assumenda natus optio repudiandae, dolor voluptatem
+        voluptates!
+      </p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor deleniti id reprehenderit, pariatur tempore quaerat.
+        Obcaecati aspernatur nulla similique nostrum distinctio earum quae assumenda natus optio repudiandae, dolor voluptatem
+        voluptates!
+      </p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero quod, architecto consectetur quo cum eos, aut delectus
+        voluptatum obcaecati aliquam voluptate est. Sint voluptate, culpa sapiente provident hic incidunt, odio.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor deleniti id reprehenderit, pariatur tempore quaerat.
+        Obcaecati aspernatur nulla similique nostrum distinctio earum quae assumenda natus optio repudiandae, dolor voluptatem
+        voluptates!
+      </p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor deleniti id reprehenderit, pariatur tempore quaerat.
+        Obcaecati aspernatur nulla similique nostrum distinctio earum quae assumenda natus optio repudiandae, dolor voluptatem
+        voluptates!
+      </p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor deleniti id reprehenderit, pariatur tempore quaerat.
+        Obcaecati aspernatur nulla similique nostrum distinctio earum quae assumenda natus optio repudiandae, dolor voluptatem
+        voluptates!
+      </p>
+    </main>
+  </article>
+  <script>
+    var modal = document.getElementById('modal')
+
+    function hideModal() {
+      modal.style.opacity = 0
+      modal.style.zIndex = -1
+      document.body.style.overflow = 'scroll';
+    }
+
+    function showModal() {
+      modal.style.opacity = 1
+      modal.style.zIndex = 1
+      document.body.style.overflow = 'hidden';
+    }
+    if (modal) {
+      var open = document.getElementById('modalTrigger')
+      var close = document.getElementById('close')
+      hideModal()
+      open.addEventListener('click', function () {
+        showModal()
+      })
+      close.addEventListener('click', function () {
+        hideModal()
+      })
+      document.body.addEventListener('click', function (e) {
+        if (e.target !== modal && e.target !== open && !modal.contains(e.target)) {
+          hideModal()
+        }
+      })
+    }
+  </script>
+</body>
+
+</html>
