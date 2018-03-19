@@ -1,6 +1,9 @@
 # Browser Technologies
 //Robuuste, toegankelijke websites leren bouwen …
 
+# linkje
+https://hackshackshacks.github.io/browser-technologies/opdracht2/
+
 ## Opdracht 2 - 1, 2, 3 Feature Detectie
 Werk 2 componenten uit in een demo, waarbij je onderzoekt hoe verschillende features worden ondersteund en hoe je een goede fallback kan bouwen. Gebruik [html5test.com](html5test.com), [css3test.com](css3test.com) en [kangax.github.io/compat-table/es6/](kangax.github.io/compat-table/es6/])
 
