@@ -43,15 +43,12 @@
       top: 2em;
       left: 50%;
       transform: translatex(-50%);
-      opacity: 0;
-      z-index: -1;
-      transition: opacity 200ms;
+      display: none;
       border-radius: 3px;
     }
 
     article:target {
-      opacity: 1;
-      z-index: 1;
+      display: block;
     }
 
     article header {
@@ -182,7 +179,6 @@
 
     function hideModal() {
       modal.style.display = 'none'
-      modal.style.overflow = 'scroll'
       if (modal && style.length === 1) {
         document.body.style.overflow = 'scroll';
       }
@@ -190,17 +186,22 @@
 
     function showModal() {
       modal.style.display = 'block'
-      modal.style.overflow = 'hidden'
       if (modal && style.length === 1) {
         document.body.style.overflow = 'hidden';
       }
     }
     hideModal()
-    open.addEventListener('click', function () {
+    open.addEventListener('click', function (e) {
       showModal()
+      if (e.preventDefault) {
+        e.preventDefault()
+      }
     })
-    close.addEventListener('click', function () {
+    close.addEventListener('click', function (e) {
       hideModal()
+      if (e.preventDefault) {
+        e.preventDefault()
+      }
     })
     if (modal && style.length > 0) {
       document.body.addEventListener('click', function (e) {
