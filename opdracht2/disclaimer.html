@@ -190,6 +190,9 @@
     var open = document.getElementById('modalTrigger')
     var close = document.getElementById('close')
 
+    var eventTest = document.createElement('div')
+    eventTest.setAttribute('onclick', 'return;')
+
     function hideModal() {
       modal.style.display = 'none'
       if (modal && style.length === 1) {
@@ -216,7 +219,7 @@
         e.preventDefault()
       }
     })
-    if (modal && style.length > 0) {
+    if (modal && eventTest.onclick && style.length > 0) {
       document.body.addEventListener('click', function (e) {
         if (e.target !== modal && e.target !== open && !modal.contains(e.target)) {
           hideModal()
