@@ -194,22 +194,22 @@
     var nav = document.getElementById('nav')
     var style = document.getElementsByTagName('style')
 
-    var eventTest = document.createElement('div');
-    eventTest.setAttribute('onclick', 'return;');
+    var eventTest = document.createElement('div')
+    eventTest.setAttribute('onclick', 'return;')
     if (nav && typeof eventTest.onclick === "function" && style.length > 0) {
-      console.log('1')
       var menu = document.getElementById('menu')
       var button = document.createElement('button')
       var icon = document.createElement('img')
+      
       icon.src = 'hamburger.svg'
       button.appendChild(icon)
       nav.insertBefore(button, menu)
       document.body.className += 'js'
       menu.className += 'hidden'
+
       button.addEventListener('click', function () {
-        console.log(menu.className)
         if (menu.className === 'hidden') {
-          menu.className = menu.className.replace("hidden", ""); 
+          menu.className = menu.className.replace("hidden", "")
           icon.src = 'close.svg'
         } else {
           menu.className += 'hidden'
