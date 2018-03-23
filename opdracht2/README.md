@@ -10,12 +10,15 @@ This component is a simple navigation that shifts to a hamburger menu on small s
 ## Testing
 The component works in most modern browsers. From internet explorer 9 and down it will fall back to the CSS menu. 
 
+## Fallback
+The hamburger menu works primarily with Javascript. For this reason the menu is styled from Javacript and the needed elements (open and close button) are added. This only happens when the browser supports eventlisteners.
+
 # Pop up modal
 This component is a modal that opens when you click a link. Within the modal there is a fixed header with a 'close' button and a scrollable content section.
 
 ## Testing
 The support for this component is roughly the same as the hamburger in modern browsers. IE9 and IE8 fail to properly show the modal.
 
-
-
+## Fallback
+The Javascript test if the CSS is loaded and if so it enhances the modal. It enables clicking outside the modal to close it and it disables scrolling in the background. If the javascript isnt supported it will fallback to the basic :target modal.
 
