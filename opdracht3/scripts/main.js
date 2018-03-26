@@ -26,17 +26,30 @@ function loopSound (el, key) {
     el.classList.remove('loop')
   })
 }
+// check if device is mobile phone
+function checkMobile () {
+  var userAgent = navigator.userAgent || navigator.vendor || window.opera
+  if (/windows phone/i.test(userAgent) || /android/i.test(userAgent) || (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream)) {
+    return true
+  } else {
+    return false
+  }
+}
 // feature check
 if (window.addEventListener && document.body.classList) {
   var audio = document.querySelectorAll('audio')
   document.body.classList.add('js')
+  var mobile = checkMobile()
   for (var i = 0; i < audio.length; ++i) {
     // create button element
     var button = document.createElement('button')
     // set key to match audio
     button.dataset.key = audio[i].dataset.key
-    var keyText = document.createTextNode(audio[i].dataset.key)
-    button.appendChild(keyText)
+
+    if (!mobile) {
+      var keyText = document.createTextNode(audio[i].dataset.key)
+      button.appendChild(keyText)
+    }
     // set source to match source
     var source = audio[i].querySelector('source')
     button.dataset.src = source.src
