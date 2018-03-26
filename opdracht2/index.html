@@ -194,7 +194,7 @@
     var style = document.getElementsByTagName('style')
 
     var eventTest = document.createElement('div')
-    eventTest.setAttribute('onclick', 'return;')
+    eventTest.setAttribute('onclick', 'return;') // test eventlistener ipv onclick
     if (nav && typeof eventTest.onclick === "function" && style.length > 0) {
       var menu = document.getElementById('menu')
       var button = document.createElement('button')
