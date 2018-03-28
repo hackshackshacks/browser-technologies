@@ -38,6 +38,7 @@ h2 {
 }
 header {
   padding: 9rem 25rem;
+  background-color: #000000;
   background-image: url('../images/background_big.png');
 }
 main {
