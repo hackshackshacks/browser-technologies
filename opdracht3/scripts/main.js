@@ -61,8 +61,7 @@ if (window.addEventListener && 'querySelector' in document && 'classList' in tes
       button.appendChild(keyText)
     }
     // set source to match source
-    var source = audio[i].querySelector('source')
-    button.dataset.src = source.src
+    button.dataset.src = audio[i].src
 
     // trigger sound on click
     button.addEventListener('click', function () {
