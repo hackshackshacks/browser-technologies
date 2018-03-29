@@ -68,5 +68,5 @@ When testing in our schools device lab I came across lacking support for the `<a
 ![IE11](https://github.com/hackshackshacks/browser-technologies/blob/master/opdracht3/readme_images/old5.jpg?raw=true)
 
 #### Funkify
-I used the funkify extension to test the accesibility of my website.
+I used the funkify extension to test the accesibility of my website. It passed all the tests easily so in the area it should be pretty accesible.
 
