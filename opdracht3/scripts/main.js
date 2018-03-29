@@ -88,7 +88,7 @@ if (window.addEventListener && 'querySelector' in document && 'classList' in tes
   }
   // Listen to keys
   window.addEventListener('keydown', function (e) {
-    var button = document.querySelector(`button[data-key="${e.key.toLowerCase()}]"`)
+    var button = document.querySelector(`button[data-key="${e.key.toLowerCase()}"]`)
     if (button && !e.shiftKey) {
       playSound(button)
     } else if (button && e.shiftKey) {
