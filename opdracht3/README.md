@@ -35,10 +35,10 @@ if (window.addEventListener && 'querySelector' in document && 'classList' in tes
 The website is accesible using the keyboard only. I have implemented clear focus and active states. I also made sure the user knows what to do by adding some guiding text at the top of the page.
 
 ##### Focus state
-![focus state](https://github.com/hackshackshacks/browser-technologies/blob/master/readme_images/focus.png?raw=true)
+![focus state](https://github.com/hackshackshacks/browser-technologies/blob/master/opdracht3/readme_images/focus.png?raw=true)
 
 ##### Guidance
-![guidance](https://github.com/hackshackshacks/browser-technologies/blob/master/readme_images/guidance.png?raw=true)
+![guidance](https://github.com/hackshackshacks/browser-technologies/blob/master/opdracht3/readme_images/guidance.png?raw=true)
 
 ### Browser support
 The browser support is completely dependant on the support of the `<audio>` tag. If this tag is supported the core functionality is supported as well.
@@ -49,8 +49,14 @@ I have tested the website in a series of browsers.
 The app works as expected in the browser that support the `<audio>` tag. In IE11 for example it falls back to the base `audio` styling.
 
 ##### Modern browsers (chrome)
-![Modern](https://github.com/hackshackshacks/browser-technologies/blob/master/readme_images/modern.png?raw=true)
+![Modern](https://github.com/hackshackshacks/browser-technologies/blob/master/opdracht3/readme_images/modern.png?raw=true)
 
 ##### IE11
-![IE11](https://github.com/hackshackshacks/browser-technologies/blob/master/readme_images/ie11.jpeg?raw=true)
+![IE11](https://github.com/hackshackshacks/browser-technologies/blob/master/opdracht3/readme_images/ie11.jpeg?raw=true)
+
+##### Old mobile browsers
+When testing in our schools device lab I came across lacking support for the `<audio>` tag. This results in a list of audio controls that don't work.
+
+#### Funkify
+I used the funkify extension to test the accesibility of my website.
 
