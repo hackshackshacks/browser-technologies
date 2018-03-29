@@ -57,15 +57,15 @@ The app works as expected in the browser that support the `<audio>` tag. In IE11
 ##### Old mobile browsers
 When testing in our schools device lab I came across lacking support for the `<audio>` tag. This results in a list of audio controls that don't work.
 
-![IE11](https://github.com/hackshackshacks/browser-technologies/blob/master/opdracht3/readme_images/old1.jpg?raw=true)
-
 ![IE11](https://github.com/hackshackshacks/browser-technologies/blob/master/opdracht3/readme_images/old2.jpg?raw=true)
 
-![IE11](https://github.com/hackshackshacks/browser-technologies/blob/master/opdracht3/readme_images/old3.jpg?raw=true)
 
 ![IE11](https://github.com/hackshackshacks/browser-technologies/blob/master/opdracht3/readme_images/old4.jpg?raw=true)
 
-![IE11](https://github.com/hackshackshacks/browser-technologies/blob/master/opdracht3/readme_images/old5.jpg?raw=true)
+##### Newer mobile phones
+When tested in more modern mobile browser I got the expected result in the shape of a plain audio fallback.
+
+![IE11](https://github.com/hackshackshacks/browser-technologies/blob/master/opdracht3/readme_images/old1.jpg?raw=true)
 
 #### Funkify
 I used the funkify extension to test the accesibility of my website. It passed all the tests easily so in the area it should be pretty accesible.
