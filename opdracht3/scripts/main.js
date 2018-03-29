@@ -25,6 +25,14 @@ function loopSound (el, key) {
     sound.loop = false
     el.classList.remove('loop')
   })
+  if (key) {
+    window.addEventListener('keydown', function (e) {
+      if (e.key.toLowerCase() === key) {
+        sound.loop = false
+        el.classList.remove('loop')
+      }
+    })
+  }
 }
 // check if device is mobile phone
 function checkMobile () {
@@ -40,6 +48,7 @@ if (window.addEventListener && document.body.classList) {
   var audio = document.querySelectorAll('audio')
   document.body.classList.add('js')
   var mobile = checkMobile()
+  var looping = []
   for (var i = 0; i < audio.length; ++i) {
     // create button element
     var button = document.createElement('button')
@@ -82,6 +91,9 @@ if (window.addEventListener && document.body.classList) {
     var button = document.querySelector(`button[data-key="${e.key.toLowerCase()}"`)
     if (button && !e.shiftKey) {
       playSound(button)
+    } else if (button && e.shiftKey) {
+      looping.push(e.key.toLowerCase())
+      loopSound(button, e.key.toLowerCase())
     }
   })
 }
