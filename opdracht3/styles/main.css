@@ -91,6 +91,9 @@ main>div audio {
   -moz-box-shadow: 0px 0px 0px 5px pink;
   box-shadow: 0px 0px 0px 5px pink;
 }
+.mobile {
+  display: inline;
+}
 @media (max-width: 105rem) {
   header {
     padding: 6rem 15rem;
@@ -128,6 +131,9 @@ main>div audio {
   .js main>div button {
     width: 20vw;
     height: 20vw;
+  }
+  .mobile {
+    display: none;
   }
 }
 @media (max-width: 45rem) {
