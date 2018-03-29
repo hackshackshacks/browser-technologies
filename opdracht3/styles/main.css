@@ -36,8 +36,11 @@ h2 {
   text-decoration: underline;
   margin-bottom: 1rem;
 }
+p {
+  color: #ffffff;
+}
 header {
-  padding: 9rem 25rem;
+  padding: 6rem 25rem;
   background-color: #000000;
   background-image: url('../images/background_big.png');
 }
@@ -90,7 +93,7 @@ main>div audio {
 }
 @media (max-width: 105rem) {
   header {
-    padding: 9rem 15rem;
+    padding: 6rem 15rem;
   }
   main {
     padding: 2rem 15rem;
@@ -98,7 +101,7 @@ main>div audio {
 }
 @media (max-width: 85rem) {
   header {
-    padding: 9rem 5rem;
+    padding: 6rem 5rem;
   }
   main {
     padding: 2rem 5rem;
@@ -112,8 +115,8 @@ main>div audio {
     text-align: center;
   }
   header {
-    padding: 5rem 1rem;
-    background-position: bottom 0 right -400px;
+    padding: 3rem 1rem;
+    background-image: none;
     background-size: cover;
   }
   main {
