@@ -44,7 +44,8 @@ function checkMobile () {
   }
 }
 // feature check
-if (window.addEventListener && document.body.classList) {
+var test = document.createElement('p')
+if (window.addEventListener && 'querySelector' in document && 'classList' in test) { // feature detection
   var audio = document.querySelectorAll('audio')
   document.body.classList.add('js')
   var mobile = checkMobile()
