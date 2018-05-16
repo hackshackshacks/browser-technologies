@@ -211,6 +211,7 @@
       document.body.addEventListener('click', function (e) { // allow clicking next to modal to close
         if (e.target !== modal && e.target !== open && !modal.contains(e.target)) {
           window.location.hash = ''
+          allowScroll()
         }
       })
     }
