@@ -186,43 +186,29 @@
   </article>
   <script>
     var modal = document.getElementById('modal')
-    var style = document.getElementsByTagName('style')
     var open = document.getElementById('modalTrigger')
     var close = document.getElementById('close')
 
-    var eventTest = document.createElement('div')
-    eventTest.setAttribute('onclick', 'return;')
-
-    function hideModal() {
-      modal.style.display = 'none'
-      if (modal && style.length === 1) {
+    function allowScroll() { // allow scrolling body when modal is closed
+      if (modal) {
         document.body.style.overflow = 'scroll';
       }
     }
 
-    function showModal() {
-      modal.style.display = 'block'
-      if (modal && style.length === 1) {
+    function preventScroll() { // prevent the body from scrolling while modal is open
+      if (modal) {
         document.body.style.overflow = 'hidden';
       }
     }
-    hideModal()
-    open.addEventListener('click', function (e) {
-      showModal()
-      if (e.preventDefault) {
-        e.preventDefault()
-      }
-    })
-    close.addEventListener('click', function (e) {
-      hideModal()
-      if (e.preventDefault) {
-        e.preventDefault()
-      }
-    })
-    if (modal && eventTest.onclick && style.length > 0) {
-      document.body.addEventListener('click', function (e) {
+    if (modal && typeof modal.addEventListener === "function") {
+      open.addEventListener('click', function (e) {
+        preventScroll()
+      })
+      close.addEventListener('click', function (e) {
+        allowScroll()
+      })
+      document.body.addEventListener('click', function (e) { // allow clicking next to modal to close
         if (e.target !== modal && e.target !== open && !modal.contains(e.target)) {
-          hideModal()
           window.location.hash = ''
         }
       })
