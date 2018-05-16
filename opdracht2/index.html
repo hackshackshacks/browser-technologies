@@ -176,7 +176,7 @@
     <p>Well, the way they make shows is, they make one show. That show's called a pilot. Then they show that show to the people
       who make shows, and on the strength of that one show they decide if they're going to make more shows. Some pilots get
       picked and become television programs. Some don't, become nothing. She starred in one of the ones that became nothing.
-      </p>
+    </p>
 
     <h2>We happy?</h2>
     <p>Normally, both your asses would be dead as fucking fried chicken, but you happen to pull this shit while I'm in a transitional
@@ -193,9 +193,7 @@
     var nav = document.getElementById('nav')
     var style = document.getElementsByTagName('style')
 
-    var eventTest = document.createElement('div')
-    eventTest.setAttribute('onclick', 'return;') // test eventlistener ipv onclick
-    if (nav && typeof eventTest.onclick === "function" && style.length > 0) {
+    if (nav && typeof nav.addEventListener === "function") { // check if eventlistener
       var menu = document.getElementById('menu')
       var button = document.createElement('button')
       var icon = document.createElement('img')
