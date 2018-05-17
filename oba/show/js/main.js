@@ -158,7 +158,7 @@
       }
       var encodedQuery = encodeURIComponent(query)
       return (
-        'https://api.data.adamlink.nl/datasets/AdamNet/all/services/endpoint/sparql?default-graph-uri=&query=' +
+        'https://api.data.adamlink.nl/datasets/AdamNet/all/services/hva2018/sparql?default-graph-uri=&query=' +
         encodedQuery +
         '&format=application%2Fsparql-results%2Bjson&timeout=0&debug=on'
       )
