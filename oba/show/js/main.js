@@ -1,5 +1,4 @@
 'use strict'
-
 ;(function() {
   var app = {
     elements: {
@@ -51,9 +50,9 @@
         '</h1>\n          <h1>' +
         date +
         '</h1>\n        </div>\n        <img src="' +
-        url +
+        newUrl +
         '" srcset="' +
-        url +
+        newUrl +
         ' 1x, ' +
         highres +
         ' 2x" alt="">\n      </article>\n      '
