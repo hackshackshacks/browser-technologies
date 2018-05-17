@@ -1,18 +1,18 @@
 {
   "devDependencies": {
     "gulp": "latest",
-    "gulp-sass": "latest",
-    "gulp-uglify": "latest",
-    "gulp-concat": "latest"
+    "gulp-concat": "latest",
+    "gulp-sass": "^4.0.1",
+    "gulp-uglify": "latest"
   },
   "dependencies": {
     "babel": "^6.23.0",
-    "babel-core": "^6.26.0",
+    "babel-core": "^6.26.3",
     "babel-preset-es2015": "^6.24.1",
-    "browser-sync": "^2.23.6",
+    "browser-sync": "^2.24.4",
     "gulp-babel": "^7.0.1",
     "gulp-connect": "^5.5.0",
-    "gulp-open": "^3.0.0",
+    "gulp-open": "^3.0.1",
     "pump": "^3.0.0"
   }
 }
