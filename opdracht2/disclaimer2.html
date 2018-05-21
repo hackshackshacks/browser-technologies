@@ -52,28 +52,30 @@
       max-width: 43em;
       width: 92%;
       padding: 0;
+      margin: 3rem auto;
     }
 
     .dialog {
       position: fixed;
-      top: 10%;
+      top: 0;
       height: 80%;
       box-shadow: 0 0 100vh 100vh rgba(0, 0, 0, 0.7);
       background: #ffffff;
     }
 
-    div.disclaimer {
-      max-width: 43em;
-      margin: 3rem auto;
-    }
-
-    .disclaimer header div {
+    dialog header div {
       display: none;
       cursor: pointer;
+      align-content: center;
+    }
+
+    dialog header div img {
+      margin-left: 10px;
     }
 
     .dialog header div {
       display: block;
+      display: flex;
     }
 
     .dialog header {
@@ -162,9 +164,6 @@
   <dialog open class="disclaimer" id="modal">
     <header id="modalHeader">
       <h1>Disclaimer</h1>
-      <!-- <a href="#" id="close">
-        <img src="close.png" alt="Close modal"> close
-      </a> -->
     </header>
     <main>
       <h2>We happy?</h2>
@@ -259,8 +258,11 @@
       modal.className += ' dialog'
       modal.close()
       var close = document.createElement('div')
+      var img = document.createElement('img')
+      img.src = "close.png"
       close.innerText = 'Close'
       modalHeader.appendChild(close)
+      close.appendChild(img)
       open.addEventListener('click', function (e) {
         modal.open = true
         preventScroll()
