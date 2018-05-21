@@ -118,6 +118,11 @@
       width: 92%;
       margin: 2em auto;
     }
+
+    #cssCheck {
+      position: absolute;
+      right: 0;
+    }
   </style>
   <title>Hamburger</title>
 </head>
@@ -189,10 +194,19 @@
       shakes when you put quarters in it? No? Well, that's what you see at a toy store. And you must think you're in a toy
       store, because you're here shopping for an infant named Jeb. </p>
   </main>
+  <span id="cssCheck"></span>
   <script>
     var nav = document.getElementById('nav')
 
-    if (nav && typeof nav.addEventListener === "function") { // check if eventlistener
+    var cssCheck = document.getElementById('cssCheck')
+    var cssAvailable
+
+    if (cssCheck.getBoundingClientRect().right === window.innerWidth) {
+      cssAvailable = true
+    }
+
+
+    if (nav && typeof nav.addEventListener === "function" && cssAvailable) { // check if eventlistener
       var menu = document.getElementById('menu')
       var button = document.createElement('button')
       var icon = document.createElement('img')
