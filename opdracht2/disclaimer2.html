@@ -47,20 +47,32 @@
       color: rgb(30, 30, 30);
     }
 
-    dialog {
+    .disclaimer {
       border: 0;
       max-width: 43em;
       width: 92%;
       padding: 0;
       margin: 3rem auto;
+      background: white;
+    }
+
+    .disclaimer.transform {
+      position: fixed;
+      top: 10%;
+      height: 80%;
+      overflow: scroll;
+      padding: 1em;
+      left: 50%;
+      transform: translatex(-50%);
+      box-shadow: 0 0 100vh 100vh rgba(0, 0, 0, 0.7);
     }
 
     .dialog {
       position: fixed;
       top: 0;
       height: 80%;
-      box-shadow: 0 0 100vh 100vh rgba(0, 0, 0, 0.7);
       background: #ffffff;
+      box-shadow: 0 0 100vh 100vh rgba(0, 0, 0, 0.7);
     }
 
     dialog header div {
@@ -232,51 +244,67 @@
   </dialog>
   <span id="cssCheck"></span>
   <script>
-    var modal = document.getElementsByTagName('dialog')[0] // get modal if dialog element is supported
-    var open = document.getElementById('modalTrigger')
-    var close = document.getElementById('close')
-    var cssCheck = document.getElementById('cssCheck')
-    var modalHeader = document.getElementById('modalHeader')
-    var cssAvailable
+    var modal = document.getElementsByTagName("dialog")[0]
+    var open = document.getElementById("modalTrigger")
+    var cssCheck = document.getElementById("cssCheck")
+    var modalHeader = document.getElementById("modalHeader")
 
-    if (cssCheck.getBoundingClientRect().right === window.innerWidth) {
-      cssAvailable = true
-    }
-
-    function allowScroll() { // allow scrolling body when modal is closed
-      if (modal && cssAvailable) {
-        document.body.style.overflow = 'scroll';
+    function checkTransform() {
+      var style = Object.keys(document.body.style)
+      for (var i = 0; i < style.length; i++) {
+        if (style[i].replace(/[A-Z]/g, "-$&").toLowerCase() === "transform") {
+          return true
+        }
       }
+      return false
     }
-
-    function preventScroll() { // prevent the body from scrolling while modal is open
-      if (modal && cssAvailable) {
-        document.body.style.overflow = 'hidden';
-      }
-    }
-    if (modal && typeof modal.addEventListener === "function") {
-      modal.className += ' dialog'
-      modal.close()
-      var close = document.createElement('div')
-      var img = document.createElement('img')
+    if (typeof modal.addEventListener === "function") {
+      var close = document.createElement("div")
+      var img = document.createElement("img")
       img.src = "close.png"
-      close.innerText = 'Close'
+      close.innerText = "Close"
+      close.id = "close"
       modalHeader.appendChild(close)
       close.appendChild(img)
-      open.addEventListener('click', function (e) {
-        modal.open = true
-        preventScroll()
-      })
-      close.addEventListener('click', function (e) {
-        modal.open = false
-        allowScroll()
-      })
-      document.body.addEventListener('click', function (e) {
-        if (e.target !== modal && e.target !== open && !modal.contains(e.target)) {
+      if ("open" in modal) {
+        modal.className += " dialog"
+        modal.close()
+        open.addEventListener("click", function (e) {
+          modal.open = true
+        })
+        close.addEventListener("click", function (e) {
           modal.open = false
-          allowScroll()
+        })
+        document.body.addEventListener("click", function (e) {
+          if (e.target !== modal && e.target !== open && !modal.contains(e.target)) {
+            modal.open = false
+          }
+        })
+      } else {
+        var html = modal.innerHTML
+        var parent = modal.parentElement
+        var newEl = document.createElement("div")
+        newEl.innerHTML = html
+        parent.replaceChild(newEl, modal)
+        modal = newEl
+        modal.className += "disclaimer"
+        modal.id = "modal"
+        modal.style.display = "none"
+        if (checkTransform()) {
+          modal.className += " transform"
         }
-      })
+        open.addEventListener("click", function () {
+          modal.style.display = "block"
+        })
+        document.getElementById("close").addEventListener("click", function () {
+          modal.style.display = "none"
+        })
+        document.body.addEventListener("click", function (e) {
+          if (e.target !== modal && e.target !== open && !modal.contains(e.target)) {
+            modal.style.display = "none"
+          }
+        })
+      }
     }
   </script>
 </body>
