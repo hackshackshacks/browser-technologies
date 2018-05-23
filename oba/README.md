@@ -1,12 +1,19 @@
 # Browser Technologies
-//Robuuste, toegankelijke websites leren bouwen … 
+
+//Robuuste, toegankelijke websites leren bouwen …
 
 ## Opdracht 1 - Progressive Enhancement
-Voor de opdracht ga ik uitzoeken hoe goed mijn OBA project genaamd Imposters presteert op het gebied van Progressive Enhancement. 
+
+Voor de opdracht ga ik uitzoeken hoe goed mijn OBA project genaamd Imposters presteert op het gebied van Progressive Enhancement.
+
+### Demo
+
+[Bekijk de demo hier](http://netjs.nl/imposters/)
 
 ### Features
 
 #### Afbeeldingen
+
 Afbeeldingen zijn essentieel voor mijn concept. De afbeeldingen van de posters liggen aan de kern van het concept. Als deze, om welke reden dan ook, niet geladen worden is de website zo goed als waardeloos.
 
 Ik heb alt teksten toegevoegd om toch nog iets mee te kunnen geven. Omdat deze afbeeldingen dynamisch ingeladen worden is het moeilijk om een passende alt tekst mee te geven. Ik heb gekozen om de titel, die in veel gevallen een duidelijke omschrijven geeft, te gebruiken.
@@ -18,7 +25,9 @@ if (window.innerWidth > 900) {
   newUrl = url.replace('level3', 'level2')
 }
 ```
+
 #### Custom fonts
+
 Op de website gebruik ik inderdaad een custom font. Dit font is afkomstig van fonts.google.com. Het font laadt heel snel en is erg betrouwbaar. Voor het geval dat het font toch niet laadt heb ik het volgende gedaan:
 
 Ik laad de fonts nu in via mijn eigen CSS ipv een extern bestand. Zo kan ik makkelijk de 'font-diplay: swap;' property meegeven. Ook heb ik een fallback font ingesteld. Op deze manier wacht de pagina niet tot het font geladen is om de test te weergeven.
@@ -38,11 +47,13 @@ Ik laad de fonts nu in via mijn eigen CSS ipv een extern bestand. Zo kan ik makk
 Ook filter ik welke fonts ik precies inlaad. Het google font 'Montserrat' dat ik gebruik komt standaard met Vietnamese en Cyrillische tekens. Deze heb ik weggelaten omdat ik deze niet gebruik.
 
 #### Javascript
+
 Omdat het gaat om een single-page web app is de website onbruikbaar zonder javascript. Hier is helaas weinig aan te doen. Ik zou een melding kunnen weergeven die gebruikers vraagt om wanneer mogelijk javascript aan te zetten.
 
 Ik gebruik op dit moment voor mijn slider zowel flickity.js en jquery. Ik zou een eigen slider kunnen bouwen om niet meer van deze bestanden afhankelijk te zijn. Het zou de website ook iets sneller maken.
 
 #### Kleur
+
 Ik heb met de tool Sim Daltonism (https://michelf.ca/projects/sim-daltonism/) onderzocht hoe mijn website eruit ziet voor kleurenblinden. Bij alle meest voorkomende vormen van kleurenblindheid is de website op zichzelf goed bruikbaar. Dit geldt niet altijd voor de posters maar daar heb ik helaas weinig invloed op. De beschrijving bij de posters is denk ik voldoende om dit goed te maken.
 
 Omdat de navigatie bij laag contrast een beetje moeilijk zichtbaar is heb een een underline toegevoegd voor extra duidelijkheid.
@@ -50,32 +61,61 @@ Omdat de navigatie bij laag contrast een beetje moeilijk zichtbaar is heb een ee
 ![](https://github.com/hackshackshacks/browser-technologies/blob/master/opdracht1/Screen%20Shot%202018-03-15%20at%2023.58.57.png?raw=true)
 
 #### Breedband internet
+
 Om te testen hoe mijn site presteert wanneer de gebruiker een langzame verbinding heeft. Dit doe ik met behulp van de chrome developer tools. De volledige website kost 1mb om te laden. 800/1000kb zijn gebruikt voor het laden van de afbeeldingen. Op dit moment laad ik meteen alle posters in van het gebouw Paradiso. De mogelijkheid is er om pas wanneer de user op 'volgende' klikt de volgende poster op te halen. Dit zou wel betekenen dat de ervaring voor gebruikers met snel internet wat minder wordt.
 
 Wel worden de posters en achtergrond afbeeldingen opgeslagen in localStorage. Dit betekent dat de tweede keer laden een stuk sneller gaat dan de eerste. De tweede keer laden is meestal minder dan 150kb zelfs als er een nieuwe achtergrond wordt ingeladen.
 
 #### Cookies
-Op mijn website maak ik geen gebruik van cookies. 
+
+Op mijn website maak ik geen gebruik van cookies.
 
 #### Localstorage
+
 Mijn website slaat alle geladen posters en achtergrondafbeeldingen op in localStorage. Dit zorgt ervoor dat er geen nieuwe API call gedaan hoeft te worden voor afbeeldingen die al een keer zijn geladen.
 
 De gebruiker kan cookies en localStorage vrij makkelijk uitzetten. Dit betekent op mijn website dat de app opnieuw een api call gaat doen op de urls van de afbeeldingen op te halen. Dit is niet per se erg en de website werkt nog prima.
 
 #### Muis/trackpad
+
 Ik ben er achter gekomen dat mijn website totaal niet werkt zonder muis. Tabs slaan de navigatie volledig over en er zijn geen duidelijke focus states. De omschrijving van de posters is zelfs totaal onzichtbaar.
 
 Ik heb het volgende gedaan:
+
 * Navigatie verbeterd zodat deze bij tabben wordt meegenomen.
 * Focus states toevoegen aan alle elementen.
 * Met focus within is de omschrijving nu ook zichtbaar als de focus op de volgende/vorige knop staat.
 
 ![](https://github.com/hackshackshacks/browser-technologies/blob/master/opdracht1/Screen%20Shot%202018-03-15%20at%2023.58.57.png?raw=true)
-*Active*
+_Active_
 
 ![](https://github.com/hackshackshacks/browser-technologies/blob/master/opdracht1/Screen%20Shot%202018-03-16%20at%2000.13.08.png?raw=true)
-*Focus*
+_Focus_
+
+### Testing
+
+#### Screen reader
+
+Ik heb de website getest met behulp van de voice over van macOS.
+
+[Bekijk hier de video](https://vimeo.com/271560844)
+
+De navigatie werkt goed met de screenreader. Deze hoeft niet aangepast te worden.
+
+Tijdens de test kwam ik erachter dat de flickity slider niet heel goed samenwerkt met screenreaders. Hij leest alle items in de slider 1 voor 1 voor en dat is natuurlijk niet altijd handig. Dit is op dit moment niet makkelijk op te lossen dus het herschrijven van de slider komt op mijn to do list.
+
+Uit de test bleek ook dat de datums die bij elke poster staan niet in een `<time>` tag staan. Om deze reden leest de screenreader het voor als "negentientweeenzeventig nul één nul één". Door de tags te vervangen met time tags worden ze nu voorgelezen als "één januari negentientweeenzeventig".
+
+#### Devicelab
+
+Ik heb de website ook getest in het devicelab op school op meerdere devices.
+
+![devicelab](https://github.com/hackshackshacks/browser-technologies/blob/master/opdracht1/readme_images/devicelab.png?raw=true)
+
+De website werkt zoals verwacht in de meeste moderne browsers. Oudere browsers breken omdat deze geen forEach ondersteunen en dit gebruik ik op meerdere plekken in mijn code.
 
 ### To do
+
 * Herschrijven van flickity carousel.
 * Minder afbeeldingen tegelijk inladen
+* Herschrijven code voor oude browsers
