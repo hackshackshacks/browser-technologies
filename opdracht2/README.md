@@ -60,12 +60,26 @@ New CSS property fallback to more widely supported properties.
 
 ## Feature detection
 
-Check if eventlistener is available: `if (typeof modal.addEventListener === "function") {`
+Check if eventlistener is available:
 
-Check if the dialog tag is supported: `if ("open" in modal) {`
+`if (typeof modal.addEventListener === "function") {`
+
+Check if the dialog tag is supported:
+
+`if ("open" in modal) {`
 
 ## Device lab
 
 I tested the modal the same way I did the navigation. The modal works as intended on all the available devices.
 
 ![Device lab test - modal](https://github.com/hackshackshacks/browser-technologies/blob/master/opdracht2/readme_images/modal_total.png?raw=true)
+
+## Research
+
+As I was building these demos I researched browser support for specific features. For this research my primary source was [caniuse](http://www.caniuse.com).
+
+![flex](https://github.com/hackshackshacks/browser-technologies/blob/master/opdracht2/readme_images/flex.png?raw=true)
+
+![transform](https://github.com/hackshackshacks/browser-technologies/blob/master/opdracht2/readme_images/transform.png?raw=true)
+
+![Device lab test - modal](https://github.com/hackshackshacks/browser-technologies/blob/master/opdracht2/readme_images/eventlistener.png?raw=true)
