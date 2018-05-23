@@ -110,7 +110,7 @@ Uit de test bleek ook dat de datums die bij elke poster staan niet in een `<time
 
 Ik heb de website ook getest in het devicelab op school op meerdere devices.
 
-![devicelab](https://github.com/hackshackshacks/browser-technologies/blob/master/opdracht1/readme_images/devicelab.png?raw=true)
+![devicelab](https://github.com/hackshackshacks/browser-technologies/blob/master/oba/readme_images/devicelab.png?raw=true)
 
 De website werkt zoals verwacht in de meeste moderne browsers. Oudere browsers breken omdat deze geen forEach ondersteunen en dit gebruik ik op meerdere plekken in mijn code.
 
