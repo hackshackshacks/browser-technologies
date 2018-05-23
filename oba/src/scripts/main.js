@@ -1,4 +1,4 @@
-(() => {
+;(() => {
   const app = {
     elements: {
       buildingBtns: document.querySelectorAll('.building'),
@@ -8,25 +8,25 @@
     },
     flkty: '',
     isFlkty: false,
-    init: function () {
+    init: function() {
       api.init()
       this.handleEvents()
     },
-    handleEvents: function () {
-      this.elements.buildingBtns.forEach((btn) => {
+    handleEvents: function() {
+      this.elements.buildingBtns.forEach(btn => {
         btn.addEventListener('click', () => {
           api.setCurrentBuilding(Number(btn.value))
-          this.elements.buildingBtns.forEach((button) => {
+          this.elements.buildingBtns.forEach(button => {
             button.classList.remove('active')
           })
           btn.classList.add('active')
           api.init()
         })
       })
-      this.elements.dateBtns.forEach((btn) => {
+      this.elements.dateBtns.forEach(btn => {
         btn.addEventListener('click', () => {
           api.currentDate = Number(btn.value)
-          this.elements.dateBtns.forEach((button) => {
+          this.elements.dateBtns.forEach(button => {
             button.classList.remove('active')
           })
           btn.classList.add('active')
@@ -34,30 +34,33 @@
         })
       })
     },
-    createPoster: function (title, date, url, desc) {
-      let newTitle = title.replace(`${api.buildings[api.currentBuilding].name}`, `<span>${api.buildings[api.currentBuilding].name}</span>`)
+    createPoster: function(title, date, url, desc) {
+      let newTitle = title.replace(
+        `${api.buildings[api.currentBuilding].name}`,
+        `<span>${api.buildings[api.currentBuilding].name}</span>`
+      )
       let highres = url.replace('level3', 'level2')
       let el = `
       <article class="carousel-cell">
         <div class="poster-text">
           <h1>${newTitle}</h1>
-          <h1>${date}</h1>
+          <time>${date}</time>
         </div>
         <img src="${url}" srcset="${url} 1x, ${highres} 2x" alt="">
       </article>
       `
       return el
     },
-    render: function (data) {
+    render: function(data) {
       let posters = []
-      data.forEach((item) => {
+      data.forEach(item => {
         posters += this.createPoster(item.title, item.date, item.url)
       })
       if (this.isFlkty) {
         this.flkty.destroy()
       }
       helper.replaceHTML(this.elements.posters, posters)
-      let elem = document.querySelector('.main-carousel');
+      let elem = document.querySelector('.main-carousel')
       this.flkty = new Flickity(elem, {
         wrapAround: true
       })
@@ -100,9 +103,11 @@
     ],
     currentBuilding: 0,
     currentDate: 0,
-    init: function () {
+    init: function() {
       if (window.localStorage.getItem('currentBuilding')) {
-        this.currentBuilding = JSON.parse(window.localStorage.getItem('currentBuilding'))
+        this.currentBuilding = JSON.parse(
+          window.localStorage.getItem('currentBuilding')
+        )
         app.elements.buildingBtns[this.currentBuilding].checked = true
       } else {
         this.currentBuilding = 0
@@ -110,11 +115,11 @@
       }
       this.handleData()
     },
-    setCurrentBuilding: function (number) {
+    setCurrentBuilding: function(number) {
       window.localStorage.setItem('currentBuilding', JSON.stringify(number))
       return number
     },
-    generateUrl: function (type, limit) {
+    generateUrl: function(type, limit) {
       let query
       if (type === 'posters') {
         query = `
@@ -126,9 +131,15 @@
             ?poster dc:title ?title .
             ?poster dc:subject "Music."^^xsd:string .
             ?poster foaf:depiction ?img .
-            FILTER REGEX(?title, "${this.buildings[this.currentBuilding].name}") .
+            FILTER REGEX(?title, "${
+              this.buildings[this.currentBuilding].name
+            }") .
             ?poster sem:hasBeginTimeStamp ?date .
-            FILTER (?date > "${this.dateRange[this.currentDate][0]}"^^xsd:dateTime && ?date < "${this.dateRange[this.currentDate][1]}"^^xsd:dateTime)
+            FILTER (?date > "${
+              this.dateRange[this.currentDate][0]
+            }"^^xsd:dateTime && ?date < "${
+          this.dateRange[this.currentDate][1]
+        }"^^xsd:dateTime)
           }
           ORDER BY ?date
         `
@@ -141,9 +152,17 @@
             ?photo dc:type "foto"^^xsd:string .
             ?photo dc:title ?title .
             ?photo foaf:depiction ?img .
-            FILTER REGEX(?title, "${this.buildings[this.currentBuilding].address}") .
+            FILTER REGEX(?title, "${
+              this.buildings[this.currentBuilding].address
+            }") .
             ?photo sem:hasBeginTimeStamp ?date .
-            FILTER (?date > "${this.buildings[this.currentBuilding].dateRange[this.currentDate][0]}"^^xsd:dateTime && ?date < "${this.buildings[this.currentBuilding].dateRange[this.currentDate][1]}"^^xsd:dateTime)
+            FILTER (?date > "${
+              this.buildings[this.currentBuilding].dateRange[
+                this.currentDate
+              ][0]
+            }"^^xsd:dateTime && ?date < "${
+          this.buildings[this.currentBuilding].dateRange[this.currentDate][1]
+        }"^^xsd:dateTime)
           }
         `
       } else if (type === 'background') {
@@ -156,7 +175,9 @@
             ?photo dc:type "foto"^^xsd:string .
             ?photo dc:title ?title .
             ?photo foaf:depiction ?img .
-            FILTER REGEX(?title, "${this.buildings[this.currentBuilding].address}") .
+            FILTER REGEX(?title, "${
+              this.buildings[this.currentBuilding].address
+            }") .
             ?photo sem:hasBeginTimeStamp ?date .
             FILTER (?date > "1968-05-23T10:20:13+05:30"^^xsd:dateTime && ?date < "2017-05-23T10:20:13+05:30"^^xsd:dateTime)
           }
@@ -166,7 +187,7 @@
       let encodedQuery = encodeURIComponent(query)
       return `https://api.data.adamlink.nl/datasets/AdamNet/all/services/endpoint/sparql?default-graph-uri=&query=${encodedQuery}&format=application%2Fsparql-results%2Bjson&timeout=0&debug=on`
     },
-    getData: function (url) {
+    getData: function(url) {
       return new Promise((resolve, reject) => {
         const xhr = new XMLHttpRequest()
         xhr.open('get', url)
@@ -175,12 +196,12 @@
         xhr.send()
       })
     },
-    handleData: function () {
+    handleData: function() {
       let loaded = 0
       let limit
-      this.getData(this.generateUrl('posters')).then((result) => {
+      this.getData(this.generateUrl('posters')).then(result => {
         let data = JSON.parse(result).results.bindings
-        let usefulData = data.map((item) => {
+        let usefulData = data.map(item => {
           let obj = {
             title: item.title.value,
             date: item.date.value,
@@ -193,52 +214,100 @@
         // anImg.addEventListener('load', () => {
         //   console.log('loaded')
         // })
-        window.localStorage.setItem(`${this.buildings[this.currentBuilding].name.toLowerCase()}_posters`, JSON.stringify(usefulData))
+        window.localStorage.setItem(
+          `${this.buildings[this.currentBuilding].name.toLowerCase()}_posters`,
+          JSON.stringify(usefulData)
+        )
         app.render(usefulData)
         loaded++
         this.updateLoader(loaded)
       })
       let newUrl
       let randomNum
-      if (window.localStorage.getItem(`${this.buildings[this.currentBuilding].name.toLowerCase()}_count`)) {
-        limit = JSON.parse(window.localStorage.getItem(`${this.buildings[this.currentBuilding].name.toLowerCase()}_count`))
+      if (
+        window.localStorage.getItem(
+          `${this.buildings[this.currentBuilding].name.toLowerCase()}_count`
+        )
+      ) {
+        limit = JSON.parse(
+          window.localStorage.getItem(
+            `${this.buildings[this.currentBuilding].name.toLowerCase()}_count`
+          )
+        )
         randomNum = helper.randomize(1, limit) - 1
-        if (window.localStorage.getItem(`${this.buildings[this.currentBuilding].name.toLowerCase()}_background-${this.currentDate}-${randomNum}`)) {
-          let url = JSON.parse(window.localStorage.getItem(`${this.buildings[this.currentBuilding].name.toLowerCase()}_background-${this.currentDate}-${randomNum}`))
+        if (
+          window.localStorage.getItem(
+            `${this.buildings[
+              this.currentBuilding
+            ].name.toLowerCase()}_background-${this.currentDate}-${randomNum}`
+          )
+        ) {
+          let url = JSON.parse(
+            window.localStorage.getItem(
+              `${this.buildings[
+                this.currentBuilding
+              ].name.toLowerCase()}_background-${this.currentDate}-${randomNum}`
+            )
+          )
           app.elements.background.style.backgroundImage = `url(${url})`
         } else {
-          this.getData(this.generateUrl('background', randomNum)).then((result) => {
-            console.log(result)
-            let oldUrl = JSON.parse(result).results.bindings[0].img.value
-            newUrl = this.storeBackground(oldUrl)
-            window.localStorage.setItem(`${this.buildings[this.currentBuilding].name.toLowerCase()}_background-${this.currentDate}-${randomNum}`, JSON.stringify(newUrl))
-            app.elements.background.style.backgroundImage = `url(${newUrl})`
-          })
+          this.getData(this.generateUrl('background', randomNum)).then(
+            result => {
+              console.log(result)
+              let oldUrl = JSON.parse(result).results.bindings[0].img.value
+              newUrl = this.storeBackground(oldUrl)
+              window.localStorage.setItem(
+                `${this.buildings[
+                  this.currentBuilding
+                ].name.toLowerCase()}_background-${
+                  this.currentDate
+                }-${randomNum}`,
+                JSON.stringify(newUrl)
+              )
+              app.elements.background.style.backgroundImage = `url(${newUrl})`
+            }
+          )
         }
         loaded = loaded + 2
         this.updateLoader(loaded)
       } else {
-        this.getData(this.generateUrl('count')).then((result) => {
-          limit = JSON.parse(result).results.bindings[0].count.value
-          randomNum = helper.randomize(1, limit) - 1
-          window.localStorage.setItem(`${this.buildings[this.currentBuilding].name.toLowerCase()}_count`, JSON.stringify(limit))
-          loaded++
-          this.updateLoader(loaded)
-        }).then(() => {
-          this.getData(this.generateUrl('background', helper.randomize(1, limit) - 1)).then((result) => {
-            window.localStorage.setItem(`${this.buildings[this.currentBuilding].name.toLowerCase()}_background-${this.currentDate}-${randomNum}`, JSON.stringify(newUrl))
+        this.getData(this.generateUrl('count'))
+          .then(result => {
+            limit = JSON.parse(result).results.bindings[0].count.value
+            randomNum = helper.randomize(1, limit) - 1
+            window.localStorage.setItem(
+              `${this.buildings[
+                this.currentBuilding
+              ].name.toLowerCase()}_count`,
+              JSON.stringify(limit)
+            )
             loaded++
             this.updateLoader(loaded)
           })
-        })
+          .then(() => {
+            this.getData(
+              this.generateUrl('background', helper.randomize(1, limit) - 1)
+            ).then(result => {
+              window.localStorage.setItem(
+                `${this.buildings[
+                  this.currentBuilding
+                ].name.toLowerCase()}_background-${
+                  this.currentDate
+                }-${randomNum}`,
+                JSON.stringify(newUrl)
+              )
+              loaded++
+              this.updateLoader(loaded)
+            })
+          })
       }
     },
-    storeBackground: function (data) {
+    storeBackground: function(data) {
       let splitUrl = data.split('/')
       splitUrl[5] = '1000x1000'
       return splitUrl.join('/')
     },
-    updateLoader: function (loaded) {
+    updateLoader: function(loaded) {
       if (loaded !== 3) {
         document.querySelector('.main-carousel').classList.remove('show')
       } else if (loaded === 3) {
@@ -248,24 +317,26 @@
     }
   }
   const helper = {
-    randomize: function (min, max) {
+    randomize: function(min, max) {
       return Math.floor(Math.random() * (max - min + 1) + min) // number between min and max
     },
-    emptyElement: function (element) { // empty an html element
+    emptyElement: function(element) {
+      // empty an html element
       while (element.firstChild) {
         element.removeChild(element.firstChild)
       }
     },
-    replaceHTML: function (element, string) { // empty html and insert new value
+    replaceHTML: function(element, string) {
+      // empty html and insert new value
       this.emptyElement(element)
       element.insertAdjacentHTML('beforeend', string)
     },
-    checkImg: function (imageUrl, callBack) {
+    checkImg: function(imageUrl, callBack) {
       var imageData = new Image()
-      imageData.onload = function () {
+      imageData.onload = function() {
         callBack(true)
       }
-      imageData.onerror = function (e) {
+      imageData.onerror = function(e) {
         e.preventDefault()
         callBack(false)
       }
