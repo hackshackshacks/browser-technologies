@@ -31,7 +31,40 @@ nav>ul li {
 
 The hamburger menu works primarily with Javascript. For this reason the menu is styled from Javacript and the needed elements (open and close button) are added. This only happens when the browser supports eventlisteners.
 
-Check if addEventListener is supported: `typeof nav.addEventListener === "function"`
+Check if addEventListener is supported:
+
+```
+typeof nav.addEventListener === "function"
+```
+
+If eventlisteners aren't supported the menu will fall back to an always visible menu. It is still just as usable but it takes up more of the screen.
+
+Since the menu very much depends on CSS to function, I was looking for a way to detect if the CSS stylesheet is loaded. Since I couldn't find much online I thought of my own solution. I came up with the following:
+
+HTML:
+
+```
+<span id="cssCheck"></span>
+```
+
+CSS:
+
+```
+#cssCheck {
+  position: absolute;
+  right: 0;
+}
+```
+
+JS:
+
+```
+if (cssCheck.getBoundingClientRect().right === window.innerWidth) {
+  cssAvailable = true
+}
+```
+
+This should only (and did in my tests) return `true` if the stylesheet is actually loaded. This makes sure that my JS doesn't add the hamburger functionality when the CSS is not available. This is an experiment. I am aware of other methods that accomplish the same thing. Such as loading a seperate stylesheet from JS. All solutions I came across seemed to have a downside to them so that's why I tried something new.
 
 ## Device lab
 
@@ -64,9 +97,48 @@ Check if eventlistener is available:
 
 `if (typeof modal.addEventListener === "function") {`
 
+The modal heavily relies on either support for the `<dialog>` tag or CSS 2d transforms. For this reason I designed two feature detectors.
+
 Check if the dialog tag is supported:
 
 `if ("open" in modal) {`
+
+This returns true if the `<dialog>` tag is supported by the browser.
+
+Fallback to div
+
+```
+var html = modal.innerHTML
+var parent = modal.parentElement
+var newEl = document.createElement("div")
+newEl.innerHTML = html
+parent.replaceChild(newEl, modal)
+```
+
+If the `<dialog>` tag is not supported the tag will be replaced by a `<div>` tag that I can style as needed.
+
+Transform
+
+```
+function checkTransform() {
+  var style = Object.keys(document.body.style)
+  for (var i = 0; i < style.length; i++) {
+    if (style[i].replace(/[A-Z]/g, "-$&").toLowerCase() === "transform") {
+      return true
+    }
+  }
+  return false
+}
+if (checkTransform()) {
+  modal.className += " transform"
+}
+```
+
+This snippet adds the "transform" class to the element if the property is supported by the browser. This allows me to style the element differently.
+
+[source](https://twitter.com/LeaVerou/status/998714954386755590)
+
+At the moment the modal falls back to be lower down in the html if CSS transforms aren't supported. This way users can simply scroll to it instead of opening it.
 
 ## Device lab
 
