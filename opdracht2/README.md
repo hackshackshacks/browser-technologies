@@ -151,7 +151,13 @@ I tested the modal the same way I did the navigation. The modal works as intende
 As I was building these demos I researched browser support for specific features. For this research my primary source was [caniuse](http://www.caniuse.com).
 
 ![flex](https://github.com/hackshackshacks/browser-technologies/blob/master/opdracht2/readme_images/flex.png?raw=true)
+Flexbox has pretty bad support in Internet Explorer. This means I have to look at `display: block;` and `display: inline-block` fallbacks in these browsers.
 
 ![transform](https://github.com/hackshackshacks/browser-technologies/blob/master/opdracht2/readme_images/transform.png?raw=true)
+Because 2d transforms aren't always available I need to think about alternative solutions.
 
-![Device lab test - modal](https://github.com/hackshackshacks/browser-technologies/blob/master/opdracht2/readme_images/eventlistener.png?raw=true)
+![eventlistener](https://github.com/hackshackshacks/browser-technologies/blob/master/opdracht2/readme_images/eventlistener.png?raw=true)
+`addEventListener` isn't supported in IE8-. I need to make sure that my code doesn't break in these cases.
+
+![classlist](https://github.com/hackshackshacks/browser-technologies/blob/master/opdracht2/readme_images/classlist.png?raw=true)
+`element.classList` has pretty bad support too in Internet Explorer browsers. I should be careful using it and if I do I should provide a fallback.
