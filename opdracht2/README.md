@@ -27,6 +27,23 @@ nav>ul li {
 }
 ```
 
+## Feedback
+
+I received feedback after my first attempt at this menu.
+
+This was the feature detection I had before:
+
+```
+if (modal && eventTest.onclick && style.length > 0) {
+  document.body.addEventListener('click', function (e) {
+```
+
+Testing for onclick events and eventlisteners are two different things. My check did not actually accomplish anything.
+
+I also tried checking if my style was loaded by using document.getElementsByTagName("style").length. This doesn't work the way I thought it did.
+
+See "Feature Detection" for my new solutions
+
 ## Feature detection
 
 The hamburger menu works primarily with Javascript. For this reason the menu is styled from Javacript and the needed elements (open and close button) are added. This only happens when the browser supports eventlisteners.
@@ -90,6 +107,23 @@ New CSS property fallback to more widely supported properties.
   display: flex;
 }
 ```
+
+## Feedback
+
+I received feedback after my first attempt at this modal.
+
+My feature detection looked like this:
+
+```
+if (modal && eventTest.onclick && style.length > 0) {
+  document.body.addEventListener('click', function (e) {
+```
+
+Testing for onclick events and eventlisteners are two different things. My check did not actually accomplish anything.
+
+I also tried checking if my style was loaded by using document.getElementsByTagName("style").length. This doesn't work the way I thought it did.
+
+See "Feature Detection" for my new solutions
 
 ## Feature detection
 
